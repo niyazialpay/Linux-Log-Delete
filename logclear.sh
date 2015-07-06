@@ -6,13 +6,8 @@ find /var/log/ -type f >logdosyalari.txt
 while read line
 do
     NAME=`echo "$line" | cut -d'.' -f1`
-    EXTENSION=`echo "$line" | cut -d'.' -f2`
-    
-    if [ $EXTENSION=='gz' ]; then     
-        rm -rf $NAME.gz
-    else
+    rm -rf $NAME.gz
     :> "$line";
-    fi
 done <logdosyalari.txt
 rm -rf logdosyalari.txt
 rm -rf /var/log/*-2*
